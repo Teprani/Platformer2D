@@ -8,7 +8,7 @@ public class player : MonoBehaviour
     CapsuleCollider2D cap;
     Rigidbody2D rb;
     SpriteRenderer sr;
-    Animator animController;
+    //Animator animController;
     float horizontal_value;
     Vector2 ref_velocity = Vector2.zero;
 
@@ -31,8 +31,9 @@ public class player : MonoBehaviour
         cap = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        animController = GetComponent<Animator>();
+        //animController = GetComponent<Animator>();
         //Debug.Log(Mathf.Lerp(current, target, 0));
+        rb.gravityScale = 4f;
     }
 
     // Update is called once per frame
@@ -44,12 +45,12 @@ public class player : MonoBehaviour
         if (horizontal_value > 0) sr.flipX = false;
         else if (horizontal_value < 0) sr.flipX = true;
 
-        animController.SetFloat("Speed", Mathf.Abs(horizontal_value));
+        //animController.SetFloat("Speed", Mathf.Abs(horizontal_value));
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
             is_jumping = true;
-            animController.SetBool("Jumping", true);
+            //animController.SetBool("Jumping", true);
         }
     }
     void FixedUpdate()
@@ -69,11 +70,11 @@ public class player : MonoBehaviour
 
         Vector2 target_velocity = new Vector2(horizontal_value * moveSpeed_horizontal * Time.deltaTime, rb.velocity.y);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, target_velocity, ref ref_velocity, 0.05f);
-        if (rb.velocity != Vector2.zero)
+        /*if (rb.velocity != Vector2.zero)
         {
             animController.SetBool("Run", true);
         }
-        else animController.SetBool("Run", false);
+        else animController.SetBool("Run", false);*/
 
     }
     /*private void Crouch()
@@ -104,15 +105,15 @@ public class player : MonoBehaviour
             }
         }
     }*/
-    /*private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         grounded = true;
-        animController.SetBool("Jumping", false);
+        //animController.SetBool("Jumping", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        animController.SetBool("Jumping", false);
-    }*/
+        //animController.SetBool("Jumping", false);
+    }
 
 }
