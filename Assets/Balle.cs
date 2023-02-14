@@ -22,13 +22,13 @@ public class Balle : MonoBehaviour
     void Update()
     {
         
-        rb.velocity =transform.right * BulletSpeed; 
+        rb.velocity = transform.right * BulletSpeed; 
     }
     void DestroyProjectile()
     {
         Destroy(gameObject);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ennemy"))
         {
@@ -36,6 +36,8 @@ public class Balle : MonoBehaviour
             DestroyProjectile();
             Debug.Log("beh");
         }
-        
+        else DestroyProjectile();
+
+
     }
 }

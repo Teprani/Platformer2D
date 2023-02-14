@@ -6,10 +6,13 @@ public class Prejectil : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    [SerializeField]private Transform spawnPoint;
+    [SerializeField]private Transform SpawnPoint;
+    [SerializeField] private Transform SpawnPointBloc;
     [SerializeField] private GameObject balle;
+    [SerializeField] private GameObject bloc;
     [SerializeField] private float offset;
-    
+    public int NombreBloc = 0;
+
 
     void Start()
     {
@@ -27,12 +30,33 @@ public class Prejectil : MonoBehaviour
         {
             Shoot();
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SpawnBloc();
+        }
     }
     void Shoot()
     {
         
-        Instantiate(balle,spawnPoint.position,spawnPoint.rotation) ;
+        Instantiate(balle,SpawnPoint.position,SpawnPoint.rotation);
         
     }
-    
+    void SpawnBloc()
+    {
+        if (NombreBloc == 0)
+        {
+            Instantiate(bloc, SpawnPointBloc.position, SpawnPointBloc.rotation);
+            NombreBloc++;
+        }
+        //if (NombreBloc > 0)
+        //{
+        //    Destroy(bloc);
+        //    Instantiate(bloc, SpawnPointBloc.position, SpawnPointBloc.rotation);
+        //    NombreBloc--;
+        //}
+
+
+    }
+
+
 }
