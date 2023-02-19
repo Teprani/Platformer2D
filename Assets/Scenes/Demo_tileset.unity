@@ -233,8 +233,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634628091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.689, y: -0.32, z: 0}
-  m_LocalScale: {x: 1.0268229, y: 0.16343008, z: 1.1679}
+  m_LocalPosition: {x: 0.368, y: -0.246, z: 0}
+  m_LocalScale: {x: 0.16613995, y: 0.16343008, z: 1.1679}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1929796728}
@@ -282,7 +282,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dff2c6e04858cef4da8fd979c33beef4, type: 3}
   m_Color: {r: 0.9622642, g: 0.6856864, b: 0.20425421, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -305,9 +305,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8fcc5cdded6a04ab257826581ad1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 1929796728}
+  SpawnPoint: {fileID: 1929796728}
+  SpawnPointBloc: {fileID: 1929796728}
   balle: {fileID: 5216554852982423932, guid: d15008b3ce2fc674ca8daa6a1702e284, type: 3}
+  bloc: {fileID: 9064120480810985577, guid: 34845e7aa6ce0534ebdf5ea879878117, type: 3}
   offset: 0
+  NombreBloc: 0
 --- !u!1 &1519352319
 GameObject:
   m_ObjectHideFlags: 0
@@ -4745,7 +4748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929796727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.524, y: -0.17, z: 0}
+  m_LocalPosition: {x: 4.93, y: -0.17, z: 0}
   m_LocalScale: {x: 1.5338576, y: 6.118825, z: 0.8562377}
   m_ConstrainProportionsScale: 0
   m_Children: []
