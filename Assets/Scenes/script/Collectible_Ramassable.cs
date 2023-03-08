@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Collectible_Ramassable : MonoBehaviour
 {
+    private GameObject playerRef;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,17 +15,25 @@ public class Collectible_Ramassable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PickUpPotion();
+    }
+
+    void PickUpPotion()
+    {
+        if (playerRef && Input.GetKeyDown(KeyCode.A))
+        {
+            playerRef.GetComponentInChildren<Health>().pv += 10;
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("BEH");
-        if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
-        {
-            collision.gameObject.GetComponentInChildren<Health>().pv += 10;
-            Destroy(gameObject);
-            Debug.Log("BEHHHHHHHHHHHH");
-        }
+        playerRef = collision.gameObject;
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        playerRef = null;
     }
 }

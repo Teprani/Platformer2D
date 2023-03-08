@@ -21,6 +21,12 @@ public class player : MonoBehaviour
     [SerializeField] bool is_crouching = false;
     [Range(0, 1)] [SerializeField] float smooth_time = 0.5f;
 
+     [SerializeField] int CountJump = 2;
+    private int LastPressedJumpTime = 0;
+    private int LastOnGroundTime = 0;
+
+
+
     bool CheckSphere;
     private Vector2 aidepose;
     [SerializeField] GameObject aide;
@@ -47,20 +53,35 @@ public class player : MonoBehaviour
 
         //animController.SetFloat("Speed", Mathf.Abs(horizontal_value));
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && CountJump > 0)
         {
-            is_jumping = true;
-            //animController.SetBool("Jumping", true);
+            Jump();
+
         }
     }
+
+ void Jump()
+    {
+        // Garantit que nous ne pouvons pas appeler Jump plusieurs fois � partir d'une seule pression
+        LastPressedJumpTime = 0;
+        LastOnGroundTime = 0;
+        CountJump -= 1;
+        
+
+        // On augmente la force appliqu�e si on tombe
+        // Cela signifie que nous aurons toujours l'impression de sauter le m�me montant
+        float force = jumpForce;
+        if (rb.velocity.y < 0)
+            force -= rb.velocity.y;
+
+
+        rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+    }
+
     void FixedUpdate()
     {
-        if (is_jumping && grounded)
-        {
-            is_jumping = false;
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            grounded = false;
-        }
+       
 
         //if (Input.GetButton("Vertical") && grounded) ;
         //{
@@ -107,12 +128,20 @@ public class player : MonoBehaviour
     }*/
     private void OnTriggerStay2D(Collider2D collision)
     {
-        grounded = true;
+        
         //animController.SetBool("Jumping", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        CountJump = 2;
+        grounded = true ;
+        //animController.SetBool("Jumping", false);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        grounded = false ;
         //animController.SetBool("Jumping", false);
     }
 
