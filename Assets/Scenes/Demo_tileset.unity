@@ -218,6 +218,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8665859717630257908, guid: d09e7a9b20580434899313e46a7167a5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -142
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665859717630257908, guid: d09e7a9b20580434899313e46a7167a5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 35.062195
+      objectReference: {fileID: 0}
     - target: {fileID: 8665859717840211943, guid: d09e7a9b20580434899313e46a7167a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -349,7 +357,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 7.78125, y: 4.5625, z: 0}
+  m_ChunkCullingBounds: {x: 0.8802084, y: 0.34375, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -375,7 +383,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -5, y: 3, z: 0}
+  - first: {x: -7, y: 2, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 1
@@ -395,7 +403,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -3, y: 3, z: 0}
+  - first: {x: -1, y: 3, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 1
@@ -659,7 +667,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.3451805
+  orthographic size: 11.686582
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -683,8 +691,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544430318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -0.2, z: -10}
-  m_LocalScale: {x: 0.32910395, y: 3.7861183, z: 3.7861183}
+  m_LocalPosition: {x: -0.3, y: 0.22, z: -10}
+  m_LocalScale: {x: 0.4338248, y: 4.990861, z: 4.990861}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5225157186162483379}
