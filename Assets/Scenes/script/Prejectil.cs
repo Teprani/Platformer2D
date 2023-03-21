@@ -13,6 +13,12 @@ public class Prejectil : MonoBehaviour
     [SerializeField] private float offset;
     public int NombreBloc = 0;
 
+    public float TimeBetweenSpawns= 1f;  
+    public float timeSinceSpawn = 0f;
+    private int nextSpawn = 0;
+    private bool doneSpawning = false;
+    private float coolDown = 5; 
+
 
     void Start()
     {
@@ -33,8 +39,25 @@ public class Prejectil : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpawnBloc();
+
+        }
+
+         if (doneSpawning == false)
+        {
+            timeSinceSpawn += Time.deltaTime;
+            if (timeSinceSpawn >= TimeBetweenSpawns)
+            {
+                //nextSpawn++;
+                timeSinceSpawn = 0f;
+                //if (nextSpawn >= 2)
+                //{
+                    doneSpawning = true;
+                //}
+            }
         }
     }
+
+    
     void Shoot()
     {
         
@@ -43,11 +66,14 @@ public class Prejectil : MonoBehaviour
     }
     void SpawnBloc()
     {
-        if (NombreBloc == 0)
+        if (NombreBloc < 2 && doneSpawning)
         {
             Instantiate(bloc, SpawnPointBloc.position, SpawnPointBloc.rotation);
             NombreBloc++;
+            doneSpawning = false;
+            Invoke ("nbrBloc",coolDown);
         }
+
         //if (NombreBloc > 0)
         //{
         //    Destroy(bloc);
@@ -57,6 +83,10 @@ public class Prejectil : MonoBehaviour
 
 
     }
+    void nbrBloc ()
+    {
+        NombreBloc--;
 
+    }
 
 }

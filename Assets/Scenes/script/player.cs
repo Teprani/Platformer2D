@@ -62,14 +62,14 @@ public class player : MonoBehaviour
 
  void Jump()
     {
-        // Garantit que nous ne pouvons pas appeler Jump plusieurs fois � partir d'une seule pression
+        // Garantit que nous ne pouvons pas appeler Jump plusieurs fois  partir d'une seule pression
         LastPressedJumpTime = 0;
         LastOnGroundTime = 0;
         CountJump -= 1;
         
 
-        // On augmente la force appliqu�e si on tombe
-        // Cela signifie que nous aurons toujours l'impression de sauter le m�me montant
+        // On augmente la force appliquee si on tombe
+        // Cela signifie que nous aurons toujours l'impression de sauter le meme montant
         float force = jumpForce;
         if (rb.velocity.y < 0)
             force -= rb.velocity.y;
@@ -81,51 +81,11 @@ public class player : MonoBehaviour
 
     void FixedUpdate()
     {
-       
-
-        //if (Input.GetButton("Vertical") && grounded) ;
-        //{
-        //    Crouch();
-        //}
-
-
         Vector2 target_velocity = new Vector2(horizontal_value * moveSpeed_horizontal * Time.deltaTime, rb.velocity.y);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, target_velocity, ref ref_velocity, 0.05f);
-        /*if (rb.velocity != Vector2.zero)
-        {
-            animController.SetBool("Run", true);
-        }
-        else animController.SetBool("Run", false);*/
 
     }
-    /*private void Crouch()
-    {
-        if (Input.GetButton("Vertical") && grounded)
-        {
-            aidepose = new Vector2(aide.transform.position.x, aide.transform.position.y);
-            CheckSphere = Physics2D.OverlapCircle(aidepose, 0.1f);
-            is_crouching = true;
-            moveSpeed_horizontal = 200f;
-            cap.offset = new Vector2(0.1f, -0.6f);
-            cap.size = new Vector2(1.1f, 0.8f);
-            cap.direction = CapsuleDirection2D.Horizontal;
-            animController.SetBool("Crouching", true);
-        }
-        else
-        {
-            aidepose = new Vector2(aide.transform.position.x, aide.transform.position.y);
-            CheckSphere = Physics2D.OverlapCircle(aidepose, 0.1f);
-            if (CheckSphere == false)
-            {
-                is_crouching = false;
-                moveSpeed_horizontal = 400f;
-                cap.offset = new Vector2(0f, -0.35f);
-                cap.size = new Vector2(1f, 1.3f);
-                cap.direction = CapsuleDirection2D.Vertical;
-                animController.SetBool("Crouching", false);
-            }
-        }
-    }*/
+   
     private void OnTriggerStay2D(Collider2D collision)
     {
         

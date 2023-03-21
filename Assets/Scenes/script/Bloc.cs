@@ -5,24 +5,28 @@ using UnityEngine;
 public class Bloc : MonoBehaviour
 {
     [SerializeField] private float lifeTime=5;
-    [SerializeField] private GameObject Gun;
+    //[SerializeField] private GameObject Gun;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("DestroyProjectile", lifeTime);
+        Invoke("DestroyProjectile", lifeTime); //detruit le bloc après  seconde lifetime
     }
 
     // Update is called once per frame
+ 
     void Update()
     {
-        
-    }
+       
+ 
+    } // end update
+    
     void DestroyProjectile()
     {
         
+        //Gun.GetComponent<Prejectil>().NombreBloc--;
         Destroy(gameObject);
-        Gun.GetComponent<Prejectil>().NombreBloc = 0;
 
     }
 }
